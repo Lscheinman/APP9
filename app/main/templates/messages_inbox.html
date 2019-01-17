@@ -1,0 +1,138 @@
+
+                        <aside class="sm-side">
+                          <div class="user-head">
+                            <a class="inbox-avatar" href="javascript:;">
+                                                        <img src="static/images/users/{{ profile_picture }}" alt="">
+                                                    </a>
+                            <div class="user-name">
+                              <h5><a href="#">{{ session.user.username }}</a></h5>
+                              <span><a href="#">{{ session.user.email }}</a></span>
+                            </div>
+                          </div>
+                          <div class="inbox-body text-center">
+                            <a href="#myModal" data-toggle="modal" title="New Message" class="btn btn-compose">+ New</a>
+                            <!-- Modal -->
+                            <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                              <div class="modal-dialog">
+                                <div class="modal-content text-left">
+                                  <div class="modal-header">
+                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><i class="ti-close"></i></button>
+                                    <h4 class="modal-title">New Message</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form class="form-horizontal" action="{{ url_for('send_message') }}" method="post">
+                                      <div class="form-group">
+                                        <label class="col-lg-2 control-label">Omni Channel Distribution</label>
+                                        <div class=".col-md-1">
+                                          <input type="text" placeholder="App users..." name="to_user" class="form-control">
+                                          <input type="text" placeholder="Email addresses..." name="to_email" class="form-control">
+                                          <input type="text" placeholder="Slack..." name="to_slack" class="form-control">
+                                          <input type="text" placeholder="Redit..." name="to_redit" class="form-control">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-lg-2 control-label">Category</label>
+                                        <div class="col-lg-10">
+                                          <input type="text" placeholder="" name="msg_category" class="form-control">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-lg-2 control-label">Subject</label>
+                                        <div class="col-lg-10">
+                                          <input type="text" placeholder="" name="msg_subject" class="form-control">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="col-lg-2 control-label">Message Detail</label>
+                                        <div class="col-lg-10">
+                                          <textarea rows="10" cols="30" class="form-control" name="msg_body"></textarea>
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                          <span class="btn green fileinput-button"><i class="fa fa-plus fa fa-white"></i>
+																	<span>Attachment</span>
+                                          <input type="file" name="files[]" multiple="" id="msg_attach">
+                                          </span>
+                                          <button class="btn btn-primary" type="submit" id="send_message_button">Send</button>
+                                        </div>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                          </div>
+                          <ul class="inbox-nav inbox-divider">
+                            <li class="{{menu_model.all}}">
+                              <a href="#" id="active_item" name="all"><i class="fa fa-inbox"></i> All
+                                <span class="badge badge-primary pull-right m-t-12">{{ message_model.all }}</span></a>
+                            </li>
+                            <li class="{{menu_model.new}}">
+                              <a href=# id="active_item" name="new"><i class="fa fa-envelope-o"></i> New
+                              <span class="badge badge-warning pull-right m-t-12">{{ message_model.new }}</span></a>
+                            </li>
+                            <li class="{{menu_model.alerts}}">
+                              <a href=# id="active_item" name="alerts"><i class="fa fa-exclamation-circle"></i> Alerts
+                              <span class="badge badge-danger pull-right m-t-12">{{ message_model.alerts}}</span></a>
+                            </li>
+                            <li class="{{menu_model.read}}">
+                              <a href=# id="active_item" name="read"><i class="fa fa-envelope-open-o"></i> Read
+                                <span class="badge badge-success pull-right m-t-12">{{ message_model.read }}</span></a>
+                            </li>
+                            <li class="{{menu_model.Sent}}">
+                              <a href=# id="active_item" name="sent"><i class="fa fa-external-link"></i> Sent
+                                <span class="badge badge-info pull-right m-t-12">{{ message_model.sent }}</span></a>
+                              <!-- TODO jQuery to load messages of this type -->
+                            </li>
+                            <li class="{{menu_model.Trash}}">
+                              <a href=# id="active_item" name="deleted"><i class=" fa fa-trash-o"></i> Trash
+                              <span class="badge badge-dark pull-right m-t-12">{{ message_model.deleted }}</span></a>
+                            </li>
+                          </ul>
+                          </ul>
+                        </aside>
+                        <aside class="lg-side">
+                          <div class="inbox-head">
+                            <h3 class="input-text">Messages</h3>
+                            <form action="#" class="pull-right position">
+                              <div class="input-append inner-append">
+                                <input type="text" class="sr-input" placeholder="Search messages">
+                                <button class="btn sr-btn append-btn" type="button"><i class="fa fa-search"></i></button>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="mail-option">
+                            <div class="chk-all chk-group">
+                              <input type="checkbox" class="mail-checkbox mail-group-checkbox" id="checkAll" />
+                              <div class="btn-group">
+                                <a data-toggle="dropdown" href="#" class="btn mini all m-l-10" aria-expanded="false">All<i class="fa fa-angle-down "></i></a>
+                                <ul class="card-option-dropdown dropdown-menu">
+                                  <li><a href="#"> None</a></li>
+                                  <li><a href="#"> Read</a></li>
+                                  <li><a href="#"> Unread</a></li>
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div class="btn-group">
+                              <a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" href="#refresh_inbox" class="btn mini tooltips">
+                                <i class=" fa fa-refresh"></i>
+                                <!-- TODO jQuery for loading messages -->
+                              </a>
+                            </div>
+                            <div class="btn-group hidden-phone">
+                              <a data-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false"> Action<i class="fa fa-angle-down "></i></a>
+
+                              <ul class="card-option-dropdown dropdown-menu">
+                                <li><a href="#"><i class="ti-pencil"></i> Mark as Read</a></li>
+                                <li><a href="#"><i class="ti-menu-alt"></i>Spam</a></li>
+                                <li><a href="#"><i class="ti-trash"></i>Delete</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                            {% include 'messages_active.html' %}
+                        </aside>

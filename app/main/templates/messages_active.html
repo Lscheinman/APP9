@@ -1,0 +1,22 @@
+                          <div class="table-responsive">
+                            <!--Mail Box-->
+                            <table class="table table-inbox table-hover table-responsive">
+                              <tbody id="messages_active">
+                                {% for m in message_model.messages %}
+                                <tr class="{{m.status}}">
+                                  <td class="inbox-small-cells">
+                                    <input type="checkbox" class="mail-checkbox">
+                                  </td>
+                                  <td class="view-message dont-show">{{ m.subject }}</td>
+                                  <td class="view-message"><a href={{ url_for('message_profile') }} data-toggle="modal"> Compose{{ m.body }}</a></td>
+                                  <td class="view-message inbox-small-cells"></td>
+                                  <td class="view-message text-right">{{ m.datetime }}</td>
+
+                                  <!--TODO if statement for attachments-->
+                                  <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
+                                </tr>
+                                <!-- TODO Truncate message length -->
+                              {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
