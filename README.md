@@ -9,9 +9,9 @@
 1. Start a new command prompt and navigate to the APP9 folder and activate the virtual environment to ensure APP9 dependencies are contained. Activate with **venv\Scripts\Activate**. This should result in a **(venv)** at the beginning of the command prompt.
 1. Install APP9 requirements with **pip install -r requirements.txt**. This will install all the depdencies to run the application.
 1. Start the development web service gateway interface server with **python wsgi.py**. This will serve the application and api to the localhost on port 5000.
-1. Go to http://127.0.0.1:5000/home for the example appllication home screen.
+1. Go to http://127.0.0.1:5000/home for the example application home screen.
 1. Go to http://127.0.0.1:5000/login for the example login screen.
-1. Go to http://127.0.0.1:5000/register for the example login screen.
-1. Go to http://127.0.0.1:5000/messages for the example login screen.
+1. Go to http://127.0.0.1:5000/register for the example registration screen.
+1. Go to http://127.0.0.1:5000/messages for the example mailbox screen.
 1. Go to http://127.0.0.1:5000 for the example API Swagger documentation and testing site. 
 
